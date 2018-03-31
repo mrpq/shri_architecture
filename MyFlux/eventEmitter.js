@@ -22,7 +22,6 @@ class EventEmitter {
         )}`;
         logger.addEntry(logEntry);
       }
-      console.log(">>>>", this.eventHandlers, eventName, data);
       const eh = this.eventHandlers
         .find(h => h.eventName === eventName)
         .cb.bind(this);

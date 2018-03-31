@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Архитектура</title>
+  <style>
+    .log-entry {
+      padding: 0;
+      margin: 0;
+      padding: 5px 10px;
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Архитектура приложения</h1>
+  <div class="view-stub">
+    <div class="view-stub__input-block">
+      <input class="view-stub__input js-view-input" />
+      <button class="view-stub__apply js-view-submit-btn">Отправить на сервер</button>
+    </div>
+    <h4>Здесь появится ответ сервера</h4>
+    <p class="view-stub__label js-view-label">
+    </p>
+  </div>
+  <h4>Лог</h4>
+  <div class="log js-log">
+  </div>
+  <script src="./app.js"></script>
+</body>
+
+</html>

@@ -1,8 +1,19 @@
-import configureStore from "./app/configureStore";
-import logger from "./app/logger";
-import indexView from "./app/views/indexView";
+import Model from "./MVP/Model";
+import Presenter from "./MVP/Presenter";
+import myView from "./mvpapp/myView";
 
-const store = configureStore(logger);
-store.subscribe(indexView);
-
-indexView.subscribe("change", () => indexView.render(store.getState()));
+const model = new Model();
+const presenter = new Presenter({
+  view: myView,
+  model,
+  events: {
+    view_submit: function() {
+      const data = this.view.getInputData();
+      this.model.updateData(data);
+    },
+    model_update: function() {
+      const data = this.model.getData();
+      this.view.render(data);
+    }
+  }
+});

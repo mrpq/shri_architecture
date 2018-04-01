@@ -1,19 +1,11 @@
-import View from "../View";
-import EventEmitter from "../../MyFlux/eventEmitter";
-import logger from "../logger";
+import View from "../../MyFlux/View";
 import { actionDataSent } from "../actions/actions";
 
 const indexView = new View("IndexView");
-const eventEmitter = new EventEmitter(logger);
-eventEmitter.mixin(indexView);
 
-const input = document.querySelector(".js-view-input");
-const submitBtn = document.querySelector(".js-view-submit-btn");
-const label = document.querySelector(".js-view-label");
-
-indexView.input = input;
-indexView.submitBtn = submitBtn;
-indexView.label = label;
+indexView.input = document.querySelector(".js-view-input");
+indexView.submitBtn = document.querySelector(".js-view-submit-btn");
+indexView.label = document.querySelector(".js-view-label");
 
 const sendToServer = data => {
   console.log(

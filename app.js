@@ -1,8 +1,11 @@
 import configureStore from "./app/configureStore";
-import logger from "./app/logger";
 import indexView from "./app/views/indexView";
 
-const store = configureStore(logger);
-store.subscribe(indexView);
-
-indexView.subscribe("change", () => indexView.render(store.getState()));
+const store = configureStore();
+store.subscribe("change", () => {
+  indexView.trigger("change");
+});
+indexView.subscribe("change", () => {
+  const data = store.getState();
+  indexView.render(data);
+});

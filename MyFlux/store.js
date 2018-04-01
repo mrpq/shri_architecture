@@ -1,26 +1,9 @@
-import logger from "../app/logger";
+import Observer from "./Observer";
 
-export default class Store {
-  constructor(initialState = {}, logger = null) {
-    this.subscribers = [];
+class Store extends Observer {
+  constructor(initialState = {}) {
+    super();
     this.state = initialState;
-    this.logger = logger;
-  }
-
-  emmit(eventName) {
-    if (this.logger) {
-      const logEntry = `Store отправляет подписчикам событие ${eventName}`;
-      this.logger.addEntry(logEntry);
-    }
-    this.subscribers.forEach(s => s.trigger(eventName, this.getState()));
-  }
-
-  subscribe(sub) {
-    if (this.logger) {
-      const logEntry = `${sub} подписывается на события Store`;
-      this.logger.addEntry(logEntry);
-    }
-    this.subscribers.push(sub);
   }
 
   getState() {
@@ -31,3 +14,5 @@ export default class Store {
     this.logger = logger;
   }
 }
+
+export default Store;

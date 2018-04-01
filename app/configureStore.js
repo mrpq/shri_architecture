@@ -1,7 +1,5 @@
-import Store from "../MyFlux/store";
-import dispatcher from "../MyFlux/dispatcher";
-// import { updateDataCb } from "./storeCallbacks";
-import logger from "../app/logger";
+import Store from "../MyFlux/Store";
+import dispatcher from "../MyFlux/Dispatcher";
 import { DATA_SENT_SUCCESS } from "./actions/constants";
 
 export const updateDataCb = function({ action, payload }) {
@@ -10,12 +8,11 @@ export const updateDataCb = function({ action, payload }) {
       this.state.data = payload;
     default:
   }
-  this.emmit("change");
+  this.trigger("change");
 };
 
 const configureStore = () => {
   const store = new Store();
-  store.setLogger(logger);
   dispatcher.subscribe(updateDataCb.bind(store));
   return store;
 };

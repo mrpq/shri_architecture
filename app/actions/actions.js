@@ -1,4 +1,3 @@
-// import ActionCreator from "../../MyFlux/ActionCreator";
 import ActionCreator from "../../MyFlux/ActionCreator";
 import { loggingDispatcher } from "../../MyFlux/Dispatcher";
 

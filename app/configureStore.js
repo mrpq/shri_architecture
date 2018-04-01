@@ -4,7 +4,12 @@ import { LoggingStore } from "../MyFlux/Store";
 import { loggingDispatcher } from "../MyFlux/Dispatcher";
 import { DATA_SENT_SUCCESS } from "./actions/constants";
 
-export const updateDataCb = function({ action, payload }) {
+/**
+ * Колбэк для обновления стейта хранилища.
+ *
+ * @param {object} { action, payload } - экшн
+ */
+const updateDataCb = function({ action, payload }) {
   switch (action) {
     case DATA_SENT_SUCCESS:
       this.state.data = payload;
@@ -13,6 +18,11 @@ export const updateDataCb = function({ action, payload }) {
   this.emmit("store_updated");
 };
 
+/**
+ * Конфигурирует хранилище, подписывает на события диспатчера
+ *
+ * @returns
+ */
 const configureStore = () => {
   const store = new LoggingStore();
   loggingDispatcher.subscribe(updateDataCb.bind(store));

@@ -1,6 +1,25 @@
 import Observer from "./Observer";
 import logger from "./Logger";
+
+/**
+ * Создает View
+ *
+ * @class View
+ * @extends {Observer}
+ */
 export default class View extends Observer {
+  /**
+   * Creates an instance of View.
+   * @param {string} params.name Имя для view
+   * @param {object} params.methods Объект вида {'имя_метода': функция}
+   *                                используется для определения публичного API view
+   * @param {object} params.fields Объект вида {'имя_поля': значение}
+   *                               используется для установки полей view.
+   *                               В полях можно хранить какие угодно данные.
+   * @param {fucntion} params.render Функция для отрисовки view на странице
+   * @param {init} params.init Функция для инициализации view. Здесь подписываемся на события DOM, например
+   * @memberof View
+   */
   constructor(params) {
     super();
     const { name, methods, fields, render, init } = params;
@@ -28,6 +47,7 @@ export default class View extends Observer {
   }
 }
 
+// LoggingView - тот же самый view, с методами обернутыми для логгирования.
 export class LoggingView extends View {
   constructor(params) {
     super(params);

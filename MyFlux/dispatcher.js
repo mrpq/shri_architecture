@@ -1,5 +1,5 @@
-// import Observer from "./Observer";
-// class Dispatcher extends Observer {
+import logger from "./Logger";
+
 class Dispatcher {
   constructor() {
     this.callbacks = [];
@@ -18,7 +18,7 @@ const dispatcher = new Dispatcher();
 export default dispatcher;
 
 class LoggingDispatcher extends Dispatcher {
-  constructor(logger = null) {
+  constructor() {
     super();
     this.logger = logger;
   }
@@ -26,23 +26,19 @@ class LoggingDispatcher extends Dispatcher {
   subscribe(cb) {
     const logEntry = `Store подписывается на события dispatcher`;
     this.logger.addEntry(logEntry);
-    super.subscribe(cp);
+    super.subscribe(cb);
   }
 
   dispatch(action) {
-    const logEntry = `dispatcher отправляет в подписанные store экшн ${
-      action.action
-    } с данными ${JSON.stringify(action.payload)}`;
+    const logEntry = `Dispatcher диспатчит в подписанные store's экшн ${JSON.stringify(
+      action
+    )}`;
     this.logger.addEntry(logEntry);
-    super.subscribe(action);
-  }
-
-  setLogger(logger) {
-    this.logger = logger;
+    super.dispatch(action);
   }
 }
 
-// const dispatcher = new Dispatcher();
+export const loggingDispatcher = new LoggingDispatcher();
 // dispatcher.setLogger(logger);
 
 // export default Dispatcher;

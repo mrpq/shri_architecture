@@ -24,7 +24,6 @@ export class LoggerActionCreator extends ActionCreator {
         action,
         payload: data
       })}`;
-      console.log(">>", this);
       this.logger.addEntry(logEntry);
     };
   }

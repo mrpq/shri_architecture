@@ -2,13 +2,10 @@
 import { LoggingView } from "../../MyFlux/View";
 import { actionDataSent } from "../actions/actions";
 
-// const indexView = new View("IndexView");
-
 const sendToServer = data => {
   console.log(
-    "Претворяемся, что отправляем данные на сервер... Данные успешно отправлены"
+    "Притворяемся, что отправляем данные на сервер... Данные успешно отправлены"
   );
-  // console.log(`Создаем экншн "DATA_SENT_SUCCESS" c payload ${data}`);
   actionDataSent(data);
 };
 

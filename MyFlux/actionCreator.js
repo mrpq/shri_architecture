@@ -29,20 +29,3 @@ export default class ActionCreator {
     };
   }
 }
-
-// export class LoggerActionCreator extends ActionCreator {
-//   constructor(dispatcher) {
-//     super(dispatcher);
-//     this.logger = logger;
-//   }
-
-//   createAction(action) {
-//     return data => {
-//       const logEntry = `Dispatcher диспатчит экшн ${JSON.stringify({
-//         action,
-//         payload: data
-//       })}`;
-//       this.logger.addEntry(logEntry);
-//     };
-//   }
-// }

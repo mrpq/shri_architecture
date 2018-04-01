@@ -9,6 +9,13 @@ class Observer {
     this.eventHandlers = [];
   }
 
+  /**
+   * Оповещает подписчиков о событии eventName. Вызывает колбэки всех подписчиков
+   *
+   * @param {string} eventName имя события
+   * @param {any} data данные, передаваемые в колбэк подписчика
+   * @memberof Observer
+   */
   trigger(eventName, data) {
     const eventHandler = this.eventHandlers
       .find(h => h.eventName === eventName)
@@ -16,6 +23,13 @@ class Observer {
     eventHandler(data);
   }
 
+  /**
+   * API для подписки на события
+   *
+   * @param {any} eventName имя события
+   * @param {any} cb колбэк подписчика
+   * @memberof Observer
+   */
   subscribe(eventName, cb) {
     this.eventHandlers.push({ eventName, cb });
   }
